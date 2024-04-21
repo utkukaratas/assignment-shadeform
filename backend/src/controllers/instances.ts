@@ -9,6 +9,7 @@ import {
   InstancesResponseSchema,
   TypesResponseSchema,
 } from "../schemas";
+import { FAKE_TYPES_RESPONSE } from "../lib/fake-data";
 
 const app = new Hono();
 
@@ -22,7 +23,7 @@ app.get(
   zValidator("json", CreateRequestSchema),
   (c) => {
     const id = c.req.param("id");
-    return c.json({id }); // InfoResponseSchema;
+    return c.json({ id }); // InfoResponseSchema;
   }
 );
 
@@ -31,12 +32,12 @@ app.post("/:id/delete", zValidator("param", IdParamSchema), (c) => {
   return c.json({}); // xxx;
 });
 
-app.get("/types", xxx, (c) => {
-  return c.json({}); // TypesResponseSchema;
+app.get("/types", (c) => {
+  return c.json(FAKE_TYPES_RESPONSE); // TypesResponseSchema;
 });
 
-app.get("/instances", xxx, (c) => {
-  return c.json({}); // InstancesResponseSchema;
+app.get("/", (c) => {
+  return c.json([]); // InstancesResponseSchema;
 });
 
 export default app;

@@ -1,0 +1,3 @@
+# get instances
+
+GET http://localhost:2999/instances/types
