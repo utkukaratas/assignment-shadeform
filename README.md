@@ -4,7 +4,7 @@
 
 - Code is pretty basic; could be a single file server too.
 
-- The important stuff is schemas.ts which is just Zod declarations. I love Zod as it enforces type safety at runtime (forms, api input/output, etc.) where Typescript's compile-time only type system
+- The important stuff is schemas.ts which is just Zod declarations. I love Zod as it enforces type safety at runtime (forms, api input/output, etc.) where Typescript's compile-time only type system is not enough.
 
 
 # Frontend Notes
@@ -19,7 +19,9 @@
 
   First thing IMHO is the multi-page wizard-like launch interface should go. One single/long form is the way to go. Something very similar to Scaleway's console is implemented as a proof of concept here. (I am no designer but I've grown some taste in cloud panels after all these years and I think Scaleway has the UX for a complex panel)
 
-  Let me attach a screenshot here:
+  Let me attach a screenshot of Scaleway's panel here:
+  
+![image](https://github.com/utkukaratas/assignment-shadeform/assets/59096/d6a502e3-88c7-4526-96fb-0bf6c09aa169)
 
 # TODO
 
