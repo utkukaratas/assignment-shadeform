@@ -13,8 +13,16 @@ import { FAKE_TYPES_RESPONSE } from "../lib/fake-data";
 
 const app = new Hono();
 
+let BEST_DATABASE_EVER: any = {
+  instances: [],
+};
+
 app.post("/create", zValidator("json", CreateRequestSchema), (c) => {
-  return c.json({}); // CreateResponseSchema;
+  const reqBody = c.req.valid("json");
+
+  BEST_DATABASE_EVER.instances.push(reqBody)
+
+  return c.json(reqBody);
 });
 
 app.get(
@@ -37,7 +45,7 @@ app.get("/types", (c) => {
 });
 
 app.get("/", (c) => {
-  return c.json([]); // InstancesResponseSchema;
+  return c.json(BEST_DATABASE_EVER.instances); // InstancesResponseSchema;
 });
 
 export default app;

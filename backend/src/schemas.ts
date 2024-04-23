@@ -1,15 +1,5 @@
 import { z } from "zod";
 
-// const User = z.object({
-//   username: z.string(),
-// });
-
-// User.parse({ username: "Ludwig" });
-
-// // extract the inferred type
-// type User = z.infer<typeof User>;
-// // { username: string }
-
 export const CreateRequestSchema = z.object({
   cloud: z.string(),
   region: z.string(),
@@ -31,8 +21,8 @@ export const CreateRequestSchema = z.object({
       ),
     }),
     script_configuration: z.object({ base64_script: z.string() }),
-  }),
-  os: z.string(),
+  }).optional(),
+  os: z.string().optional(),
 });
 
 export type ICreateRequest = z.infer<typeof CreateRequestSchema>;

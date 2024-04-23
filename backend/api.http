@@ -1,3 +1,20 @@
-# get instances
+### get instance types
 
 GET http://localhost:2999/instances/types
+
+### get instances
+
+GET http://localhost:2999/instances
+
+
+### create instance
+POST http://localhost:2999/instances/create
+content-type: application/json
+
+{
+  "cloud": "test cloud",
+  "region": "bla",
+  "shade_instance_type": "bla",
+  "shade_cloud": false,
+  "name": "test name"
+}
