@@ -95,6 +95,11 @@ function InstancesTable({ data }: any) {
   const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
+    initialState: {
+      pagination: {
+        pageSize: 50, //custom default page size
+      },
+    },
     data,
     columns,
     onSortingChange: setSorting,

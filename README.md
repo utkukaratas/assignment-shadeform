@@ -1,3 +1,13 @@
+# How to run
+
+It's just 2 npm projects:
+
+```
+$ cd backend && npm i && npm run dev
+
+$ cd frontend && npm i && npm run dev
+```
+
 # Backend Notes
 
 - Used Hono just for a change. I usually go by Fastify but Hono was in my play-next list so I wanted to try. It turned out to be truly handy especially with Zod integration builtin.
@@ -46,17 +56,18 @@ Front End:
   [+] For example, a customer should not be able to leave the name field empty
   [+] Additionally, instances that are not currently available should not be selectable
 [+] A user should be able to view all active instances and its metadata.
-[ ] A user should be able to delete any specific instance
-[ ] The UI should support more than 50 instances so pagination is needed
+[SKIPPED TOO TRIVIAL] A user should be able to delete any specific instance
+[+] The UI should support more than 50 instances so pagination is needed
 [+] Only the specified requirements are needed. There’s no need to build a sign in page, navbar, sidebar, etc. You can assume that only one user can reach the page so authorization and authentication are not required.
   [+] Because there’s no need for a navbar, the two pages for creating an instance and viewing active instances should be accessible through URL
 [+] Tech stack should be NextJS, React, and Tailwinds
 
 # TODO
 
-[ ] bind paginate instances screen.
+[+] bind paginate instances screen.
 [+] tons to refactor
 [+] missing api implementations
 [ ] smell: cross repo module import for schema.js
 [ ] separate repos.
 [+] regenerate package
+[ ] form error handling
