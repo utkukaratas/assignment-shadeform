@@ -32,9 +32,9 @@ Back End:
 [+] Set up an API server that supports the /instances/create, /instances/delete, and /instances API spec as documented here: https://docs.shadeform.ai/getting-started/introduction
   [+] You can ignore all fields that are not required
   [+] /create should store the details of an instance that’s created;
-  [ ] The instance should be created in the ‘active’ status and the IP can be randomly generated
-  [ ] /delete should remove a created instance
-  [ ] /instances should return all active instances. Some of the metadata fields in the /instances API are not passed in through the /create API. Therefore, you must call the production /instances/types API to retrieve the corresponding metadata.
+  [+] The instance should be created in the ‘active’ status and the IP can be randomly generated
+  [+] /delete should remove a created instance
+  [xxx] /instances should return all active instances. Some of the metadata fields in the /instances API are not passed in through the /create API. Therefore, you must call the production /instances/types API to retrieve the corresponding metadata.
 [+] Your backend server should use in-memory data structures instead of a database; this means that it is okay for all data to be wiped if the backend server is restarted.
 [+] Authorization and authentication are not required; you can assume all callers of the API are from the same user
 [+] Tech stack can be any generally used tech stack used in commercial software
@@ -56,7 +56,7 @@ Front End:
 
 [ ] bind paginate instances screen.
 [ ] tons to refactor
-[ ] missing api implementations
+[+] missing api implementations
 [ ] smell: cross repo module import for schema.js
 [ ] separate repos.
 [+] regenerate package

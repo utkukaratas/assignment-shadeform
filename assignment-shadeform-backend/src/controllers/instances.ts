@@ -1,4 +1,3 @@
-// books.ts
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { FAKE_TYPES_RESPONSE } from "../lib/fake-data";
@@ -26,7 +25,7 @@ app.post("/create", zValidator("json", CreateRequestSchema), (c) => {
   // set bogus fields
   const id = ++ID_COUNTER;
   reqBody.id = id.toString();
-  reqBody.status = "PENDING";
+  reqBody.status = "ACTIVE";
   reqBody.ip_addr = "127.0.0.1";
 
   BEST_DATABASE_EVER.instances.push(reqBody);

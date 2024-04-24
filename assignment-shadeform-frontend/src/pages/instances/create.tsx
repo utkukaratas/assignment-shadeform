@@ -6,19 +6,30 @@ import { InstanceSelector } from "@/components/forms/InstanceSelector";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { Button } from "@/components/ui/button";
 import { fetcher } from "@/lib/api";
+import {
+  InstanceFormProvider,
+  useInstanceFormContext,
+} from "@/components/forms/InstanceFormContext";
 
 export default function CreateInstanceScreen() {
-  const { data: instanceTypes } = useSWR(
-    `/api/instances/types`,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
+  return (
+    <InstanceFormProvider>
+      <InstanceForm />
+    </InstanceFormProvider>
   );
+}
+
+// TODO: move to separate module
+function InstanceForm() {
+  const { name, instance } = useInstanceFormContext();
+
+  const { data: instanceTypes } = useSWR(`/api/instances/types`, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   const canSubmit = useMemo(() => {
-    return false
-  }, [])
+    return name.length > 0 && !!instance;
+  }, [name, instance]);
 
   return (
     <DefaultLayout>
@@ -41,7 +52,7 @@ export default function CreateInstanceScreen() {
           Choose an Instance
         </h3>
 
-        <InstanceSelector instanceTypes={instanceTypes} selectedGPU="H100" />
+        <InstanceSelector instanceTypes={instanceTypes} />
 
         <h3 className="text-xl">
           <span className="mr-3 rounded-full inline-flex justify-center items-center border w-8 h-8 border-slate-400 ">
@@ -61,12 +72,14 @@ export default function CreateInstanceScreen() {
 
         <div>
           <b>
-            TODO: Some nice (sticky to bottom) table to display the cost of the current
-            selection.
+            TODO: Some nice (sticky to bottom) table to display the cost of the
+            current selection.
           </b>
         </div>
 
-        <Button className="w-full" disabled={!canSubmit} > Create Instance </Button>
+        <Button className="w-full" disabled={!canSubmit}>
+          Create Instance
+        </Button>
       </div>
     </DefaultLayout>
   );

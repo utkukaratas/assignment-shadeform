@@ -1,19 +1,23 @@
 import { useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { useInstanceFormContext } from "./InstanceFormContext";
+import { clsx } from "clsx";
 
-export function InstanceSelector({ selectedGPU, instanceTypes }: any) {
+export function InstanceSelector({ instanceTypes }: any) {
+  const { instance, setInstance, gpuType } = useInstanceFormContext();
+
   const gpusGroupedByCount: any = useMemo(() => {
-    if (!instanceTypes) return [];
+    if (!instanceTypes || !gpuType) return [];
     const gpusByType = Object.groupBy(
       instanceTypes.instance_types,
       ({ gpu_type }: any) => gpu_type
     );
-    const selectedInstanceTypes = gpusByType[selectedGPU]!;
+    const selectedInstanceTypes = gpusByType[gpuType]!;
     return Object.groupBy(
       selectedInstanceTypes,
       ({ num_gpus }: any) => num_gpus
     );
-  }, [instanceTypes, selectedGPU]);
+  }, [instanceTypes, gpuType]);
 
   return (
     <div className="w-full">
@@ -39,7 +43,14 @@ export function InstanceSelector({ selectedGPU, instanceTypes }: any) {
                   return (
                     <div
                       key={idx}
-                      className="flex justify-center border border-slate-200 hover:border-slate-500 cursor-pointer mb-4 p-4 rounded-lg"
+                      className={clsx([
+                        "flex justify-center border border-slate-200 hover:border-slate-500 mb-4 p-4 rounded-lg",
+                        instance === gpuInstance
+                          ? "border-slate-900 shadow-xl"
+                          : "",
+                        available ? "cursor-pointer" : "cursor-not-allowed",
+                      ])}
+                      onClick={() => available && setInstance(gpuInstance)}
                     >
                       <div className="flex-1">{gpuInstance.cloud}</div>
                       <div className="flex-1">
