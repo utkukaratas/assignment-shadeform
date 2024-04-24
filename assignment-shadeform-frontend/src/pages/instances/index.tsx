@@ -78,10 +78,6 @@ export const columns: ColumnDef<ICreateRequest>[] = [
     header: "Instance Type",
   },
   {
-    accessorKey: "shade_launch_type",
-    header: "Launch Type",
-  },
-  {
     accessorKey: "status",
     header: "Status",
   },
