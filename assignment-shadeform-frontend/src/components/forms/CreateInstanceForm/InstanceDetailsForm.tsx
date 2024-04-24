@@ -1,20 +1,21 @@
 import { cn } from "@/lib/utils";
-import { ChevronsUpDown, Check } from "lucide-react";
-import React, { ChangeEvent, useMemo, useState } from "react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { ChangeEvent, useMemo, useState } from "react";
+import { Button } from "../../ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "../ui/command";
+} from "../../ui/command";
+import { Input } from "../../ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
 import { useInstanceFormContext } from "./InstanceFormContext";
 
 export function InstanceDetailsForm() {
-  const { name, setName, instance, region, setRegion } = useInstanceFormContext();
+  const { name, setName, instance, region, setRegion } =
+    useInstanceFormContext();
 
   const [regionOpen, setRegionOpen] = useState(false);
 
@@ -53,8 +54,7 @@ export function InstanceDetailsForm() {
             className="w-80 mt-4 justify-between"
           >
             {region
-              ? availableRegions.find((r: any) => r.value === region)
-                  ?.label
+              ? availableRegions.find((r: any) => r.value === region)?.label
               : "Select region..."}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
@@ -69,9 +69,7 @@ export function InstanceDetailsForm() {
                   key={r.value}
                   value={r.value}
                   onSelect={(currentValue) => {
-                    setRegion(
-                      currentValue === region ? "" : currentValue
-                    );
+                    setRegion(currentValue === region ? "" : currentValue);
                     setRegionOpen(false);
                   }}
                 >

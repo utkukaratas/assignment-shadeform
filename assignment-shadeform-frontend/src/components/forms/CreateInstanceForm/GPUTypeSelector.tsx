@@ -1,9 +1,7 @@
-import { fetcher } from "@/lib/api";
-import { useMemo } from "react";
-import useSWR from "swr";
-import Image from "next/image";
-import { useInstanceFormContext } from "./InstanceFormContext";
 import { clsx } from "clsx";
+import Image from "next/image";
+import { useMemo } from "react";
+import { useInstanceFormContext } from "./InstanceFormContext";
 
 export function GPUTypeSelector({ instanceTypes }: any) {
   const { gpuType, setGpuType } = useInstanceFormContext();

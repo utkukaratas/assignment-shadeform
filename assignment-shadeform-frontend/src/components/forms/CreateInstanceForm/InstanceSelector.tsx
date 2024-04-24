@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { useInstanceFormContext } from "./InstanceFormContext";
 import { clsx } from "clsx";
+import { useMemo } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+import { useInstanceFormContext } from "./InstanceFormContext";
 
 export function InstanceSelector({ instanceTypes }: any) {
   const { instance, setInstance, gpuType } = useInstanceFormContext();

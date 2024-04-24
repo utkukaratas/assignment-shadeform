@@ -1,13 +1,4 @@
-// export default function DefaultLayout({ children }) {
-//   // return <div>layout - {children}</div>;
-// }
-
-import {
-  CircleUser,
-  Menu,
-  Package2,
-  Search
-} from "lucide-react";
+import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -17,12 +8,16 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-export default function DefaultLayout({ children }: { children: React.ReactNode }) {
+export default function DefaultLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">

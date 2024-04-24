@@ -40,8 +40,8 @@ export const InstanceFormProvider: React.FC<InstanceFormProviderProps> = ({
 
   // reset region when gpuType/instance changed as it will need to be re-selected
   React.useEffect(() => {
-    setRegion("")
-  }, [gpuType, instance])
+    setRegion("");
+  }, [gpuType, instance]);
 
   return (
     <InstanceFormContext.Provider value={value}>
