@@ -25,7 +25,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
-import { ICreateRequest } from "../../../../backend/src/schemas";
+import { ICreateRequest } from "../../../../assignment-shadeform-backend/src/schemas";
 
 export default function InstancesScreen() {
   const { data } = useSWR(`/api/instances`, fetcher, {

@@ -14,10 +14,9 @@ $ cd assignment-shadeform-frontend && npm i && npm run dev
 
 - Used Hono just for a change. I usually go by Fastify but Hono was in my play-next list so I wanted to try. It turned out to be truly handy especially with Zod integration builtin.
 
-- Code is pretty basic; could be a single file server too.
+- Code is pretty basic; could be a single file server too, I just divided it into some modules out of habit.
 
-- The important stuff is schemas.ts which is just Zod declarations. I love Zod as it enforces type safety at runtime (forms, api input/output, etc.) where Typescript's compile-time only type system is not enough.
-
+- The important stuff is schemas.ts which is just Zod declarations. I love Zod as it enforces type safety at runtime (forms, api input/output, etc.) where Typescript's compile-time only type system is not enough. (abused by direct imports from frontend too.)
 
 # Frontend Notes
 
@@ -29,13 +28,23 @@ $ cd assignment-shadeform-frontend && npm i && npm run dev
 
   AFAICS Shadeform's launch pages are what most priority work would be (I already saw some layout oddities).
 
-  First thing IMHO is the multi-page wizard-like launch interface should go. One single/long form is the way to go. Something very similar to Scaleway's console is implemented as a proof of concept here. (I am no designer but I've grown some taste in cloud panels after all these years and I think Scaleway has the UX for a complex panel)
+  First thing IMHO is the multi-page/wizard-like launch interface should go. One single/long form is the way to go. Something very similar to Scaleway's console is implemented as a proof of concept here. (I am no designer but I've grown some taste in cloud panels after all these years and I think Scaleway has the UX for a complex panel)
 
-  Let me attach a screenshot of Scaleway's panel here:
+  Let me attach a screenshot of Scaleway's panel here (I built the initials of a similar implementation):
 
 ![image](https://github.com/utkukaratas/assignment-shadeform/assets/59096/d6a502e3-88c7-4526-96fb-0bf6c09aa169)
 
-# ORIG SPEC
+# TODO (Things I'd do first, given time.)
+
+[+] bind paginate instances screen.
+[+] tons to refactor
+[+] missing api implementations
+[ ] smell: cross repo module import for schema.js
+[ ] separate repos.
+[+] regenerate package
+[ ] form error handling
+
+# ORIGINAL SPEC
 
 Shadeform is a unified cloud console that allows customers to create, view, and delete GPU instances. For Shadeform’s take home assessment, build a full stack, local version of Shadeform’s basic instance management functionality. You can ask clarifying questions or make sensible assumptions. If you want to try out Shadeform’s platform, please create an account and message Ronald the email you used for the account so we can add credits to the account. Please spend no more than 6 hours on this assessment. We will assess the take home assignment based on this time restriction. It is okay if not everything is done perfectly.
 
@@ -64,12 +73,3 @@ Front End:
   [+] Because there’s no need for a navbar, the two pages for creating an instance and viewing active instances should be accessible through URL
 [+] Tech stack should be NextJS, React, and Tailwinds
 
-# TODO
-
-[+] bind paginate instances screen.
-[+] tons to refactor
-[+] missing api implementations
-[ ] smell: cross repo module import for schema.js
-[ ] separate repos.
-[+] regenerate package
-[ ] form error handling
