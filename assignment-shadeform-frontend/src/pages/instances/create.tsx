@@ -1,19 +1,24 @@
+import { useMemo } from "react";
+import useSWR from "swr";
 import { GPUTypeSelector } from "@/components/forms/GPUTypeSelector";
 import { InstanceDetailsForm } from "@/components/forms/InstanceDetailsForm";
 import { InstanceSelector } from "@/components/forms/InstanceSelector";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { Button } from "@/components/ui/button";
 import { fetcher } from "@/lib/api";
-import useSWR from "swr";
 
 export default function CreateInstanceScreen() {
-  const { data: instanceTypes, error } = useSWR(
+  const { data: instanceTypes } = useSWR(
     `/api/instances/types`,
     fetcher,
     {
       revalidateOnFocus: false,
     }
   );
+
+  const canSubmit = useMemo(() => {
+    return false
+  }, [])
 
   return (
     <DefaultLayout>
@@ -61,7 +66,7 @@ export default function CreateInstanceScreen() {
           </b>
         </div>
 
-        <Button className="w-full"> Create Instance </Button>
+        <Button className="w-full" disabled={!canSubmit} > Create Instance </Button>
       </div>
     </DefaultLayout>
   );

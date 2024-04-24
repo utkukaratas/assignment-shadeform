@@ -67,10 +67,10 @@ export const columns: ColumnDef<ICreateRequest>[] = [
     accessorKey: "name",
     header: "Name",
   },
-  // {
-  //   accessorKey: "xxx",
-  //   header: "IP Address",
-  // },
+  {
+    accessorKey: "ip_addr",
+    header: "IP Address",
+  },
   {
     accessorKey: "region",
     header: "Region",
@@ -83,10 +83,10 @@ export const columns: ColumnDef<ICreateRequest>[] = [
     accessorKey: "shade_launch_type",
     header: "Launch Type",
   },
-  // {
-  //   accessorKey: "xxx",
-  //   header: "Status",
-  // },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
 ];
 
 function InstancesTable({ data }: any) {

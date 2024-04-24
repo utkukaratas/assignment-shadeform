@@ -6,26 +6,36 @@ export const CreateRequestSchema = z.object({
   shade_instance_type: z.string(),
   shade_cloud: z.boolean(),
   name: z.string(),
-  launch_configuration: z.object({
-    type: z.string(),
-    docker_configuration: z.object({
-      image: z.string(),
-      args: z.string(),
-      shared_memory_in_gb: z.number(),
-      envs: z.array(z.object({ name: z.string(), value: z.string() })),
-      port_mappings: z.array(
-        z.object({ host_port: z.number(), container_port: z.number() })
-      ),
-      volume_mounts: z.array(
-        z.object({ host_path: z.string(), container_path: z.string() })
-      ),
-    }),
-    script_configuration: z.object({ base64_script: z.string() }),
-  }).optional(),
+  launch_configuration: z
+    .object({
+      type: z.string(),
+      docker_configuration: z.object({
+        image: z.string(),
+        args: z.string(),
+        shared_memory_in_gb: z.number(),
+        envs: z.array(z.object({ name: z.string(), value: z.string() })),
+        port_mappings: z.array(
+          z.object({ host_port: z.number(), container_port: z.number() })
+        ),
+        volume_mounts: z.array(
+          z.object({ host_path: z.string(), container_path: z.string() })
+        ),
+      }),
+      script_configuration: z.object({ base64_script: z.string() }),
+    })
+    .optional(),
   os: z.string().optional(),
+
+  // TODO: extending would be cleaner, move to IInstance
+  // bogus fields for retrieval
+  id: z.string().optional(),
+  status: z.string().optional(),
+  ip_addr: z.string().optional(),
 });
 
 export type ICreateRequest = z.infer<typeof CreateRequestSchema>;
+
+export type IInstance = ICreateRequest;
 
 export const CreateResponseSchema = z.object({
   id: z.string(),
@@ -159,4 +169,4 @@ export const InstancesResponseSchema = z.object({
 
 export type IInstancesResponse = z.infer<typeof InstancesResponseSchema>;
 
-export const IdParamSchema = z.number()
+export const IdParamSchema = z.number();
