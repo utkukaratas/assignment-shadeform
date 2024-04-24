@@ -1,11 +1,7 @@
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { FAKE_TYPES_RESPONSE } from "../lib/fake-data";
-import {
-  CreateRequestSchema,
-  IInstance,
-  IdParamSchema
-} from "../schemas";
+import { CreateRequestSchema, IInstance, IdParamSchema } from "../schemas";
 
 const app = new Hono();
 

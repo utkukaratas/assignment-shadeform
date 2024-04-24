@@ -30,7 +30,7 @@ export function InstanceDetailsForm() {
       .map(({ region }: any) => {
         return {
           label: region,
-          value: region,
+          value: region.toLowerCase(),
         };
       });
   }, [instance]);
@@ -44,7 +44,6 @@ export function InstanceDetailsForm() {
         value={name}
         onChange={handleNameChange}
       />
-
       <Popover open={regionOpen} onOpenChange={setRegionOpen}>
         <PopoverTrigger asChild>
           <Button

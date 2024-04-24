@@ -3,9 +3,9 @@
 It's just 2 npm projects:
 
 ```
-$ cd backend && npm i && npm run dev
+$ cd assignment-shadeform-backend && npm i && npm run dev
 
-$ cd frontend && npm i && npm run dev
+$ cd assignment-shadeform-frontend && npm i && npm run dev
 
 # navigate to http://localhost:3000
 ```
