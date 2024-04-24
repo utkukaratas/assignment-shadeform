@@ -14,10 +14,9 @@ import {
 import { useInstanceFormContext } from "./InstanceFormContext";
 
 export function InstanceDetailsForm() {
-  const { name, setName, instance } = useInstanceFormContext();
+  const { name, setName, instance, region, setRegion } = useInstanceFormContext();
 
   const [regionOpen, setRegionOpen] = useState(false);
-  const [regionValue, setRegionValue] = useState("");
 
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -53,8 +52,8 @@ export function InstanceDetailsForm() {
             aria-expanded={regionOpen}
             className="w-80 mt-4 justify-between"
           >
-            {regionValue
-              ? availableRegions.find((r: any) => r.value === regionValue)
+            {region
+              ? availableRegions.find((r: any) => r.value === region)
                   ?.label
               : "Select region..."}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -70,8 +69,8 @@ export function InstanceDetailsForm() {
                   key={r.value}
                   value={r.value}
                   onSelect={(currentValue) => {
-                    setRegionValue(
-                      currentValue === regionValue ? "" : currentValue
+                    setRegion(
+                      currentValue === region ? "" : currentValue
                     );
                     setRegionOpen(false);
                   }}
@@ -79,7 +78,7 @@ export function InstanceDetailsForm() {
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      regionValue === r.value ? "opacity-100" : "opacity-0"
+                      region === r.value ? "opacity-100" : "opacity-0"
                     )}
                   />
                   {r.label}

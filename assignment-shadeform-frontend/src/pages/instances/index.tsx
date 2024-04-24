@@ -45,7 +45,6 @@ export default function InstancesScreen() {
           <CardHeader className="flex flex-row items-center">
             <div className="grid gap-2">
               <CardTitle>Instances</CardTitle>
-              <CardDescription>Instances xxx.</CardDescription>
             </div>
             <Button asChild size="sm" className="ml-auto gap-1">
               <Link href="/instances/create">+ Create</Link>

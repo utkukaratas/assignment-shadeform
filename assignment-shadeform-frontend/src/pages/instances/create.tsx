@@ -1,15 +1,16 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import useSWR from "swr";
 import { GPUTypeSelector } from "@/components/forms/GPUTypeSelector";
 import { InstanceDetailsForm } from "@/components/forms/InstanceDetailsForm";
 import { InstanceSelector } from "@/components/forms/InstanceSelector";
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { Button } from "@/components/ui/button";
-import { fetcher } from "@/lib/api";
+import { fetcher, post } from "@/lib/api";
 import {
   InstanceFormProvider,
   useInstanceFormContext,
 } from "@/components/forms/InstanceFormContext";
+import { useRouter } from "next/navigation";
 
 export default function CreateInstanceScreen() {
   return (
@@ -21,15 +22,32 @@ export default function CreateInstanceScreen() {
 
 // TODO: move to separate module
 function InstanceForm() {
-  const { name, instance } = useInstanceFormContext();
+  const router = useRouter();
+  const { name, instance, region } = useInstanceFormContext();
 
   const { data: instanceTypes } = useSWR(`/api/instances/types`, fetcher, {
     revalidateOnFocus: false,
   });
 
   const canSubmit = useMemo(() => {
-    return name.length > 0 && !!instance;
-  }, [name, instance]);
+    return name.length > 0 && !!instance && region.length > 0;
+  }, [name, instance, region]);
+
+  const handleSubmit = useCallback(async () => {
+    // TODO: error handling
+    // TODO: use schema from zod
+    await post("/api/instances/create", {
+      name,
+      cloud: instance.cloud,
+      region,
+      shade_instance_type: instance.shade_instance_type,
+      shade_cloud: false,
+      configuration: instance.configuration,
+    });
+
+    // navigate to listing page
+    router.push("/instances");
+  }, [instance, region, router, name]);
 
   return (
     <DefaultLayout>
@@ -77,7 +95,7 @@ function InstanceForm() {
           </b>
         </div>
 
-        <Button className="w-full" disabled={!canSubmit}>
+        <Button className="w-full" disabled={!canSubmit} onClick={handleSubmit}>
           Create Instance
         </Button>
       </div>

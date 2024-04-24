@@ -43,9 +43,9 @@ Front End:
 
 [+] Build a web app that supports creating a new instance, displaying all active instances, and deleting an instance
 [+] Instance creation should be a guided flow that minimizes sources of customer error and sources of logical errors. You will have to call the /instances/types API to get instance details and cloud to region mappings.
-  [ ] For example, a customer should not be able to leave the name field empty
-  [ ] Additionally, instances that are not currently available should not be selectable
-[ ] A user should be able to view all active instances and its metadata.
+  [+] For example, a customer should not be able to leave the name field empty
+  [+] Additionally, instances that are not currently available should not be selectable
+[+] A user should be able to view all active instances and its metadata.
 [ ] A user should be able to delete any specific instance
 [ ] The UI should support more than 50 instances so pagination is needed
 [+] Only the specified requirements are needed. There’s no need to build a sign in page, navbar, sidebar, etc. You can assume that only one user can reach the page so authorization and authentication are not required.
@@ -55,7 +55,7 @@ Front End:
 # TODO
 
 [ ] bind paginate instances screen.
-[ ] tons to refactor
+[+] tons to refactor
 [+] missing api implementations
 [ ] smell: cross repo module import for schema.js
 [ ] separate repos.
